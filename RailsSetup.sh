@@ -1,10 +1,13 @@
 #!/bin/bash
+#
+# Johnny5ive's Ruby on Rails auto-config script.
+#
 #Set this to whatever version you want (NO SPACES!)
 RUBYVERSION="1.9.3-p194"
 
 # Text color variables
-und=$(tput sgr 0 1)          # Underline
-bold=$(tput bold)             # Bold
+und=$(tput sgr 0 1)             # Underline
+bold=$(tput bold)               # Bold
 red=${txtbld}$(tput setaf 1)    # Red
 reset=$(tput sgr0)              # Reset
 
@@ -75,15 +78,8 @@ ruby setup.rb
 echo -e $red'Done'$reset
 
 echo -e $red'\nSetting up .gemrc file.\n'$bold'By default this .gemrc does not download docs for gems.'$reset
-echo ':update_sources: true' >> ~/.gemrc
-echo ':bulk_threshold: 1000' >> ~/.gemrc
-echo ':sources: ' >> ~/.gemrc
-echo '- http://rubygems.org' >> ~/.gemrc
-echo '- http://gems.github.com' >> ~/.gemrc
-echo 'gem: --no-ri --no-rdoc' >> ~/.gemrc
-echo ':verbose: true' >> ~/.gemrc
-echo ':benchmark: false' >> ~/.gemrc
-echo ':backtrace: false' >> ~/.gemrc
+cd ~
+wget -c https://github.com/johnny5ive/Linux-Setup/blob/master/.gemrc
 echo -e $red'Done\n'$reset
 
 echo -e $red'\nInstalling Rails & other gems'$reset
