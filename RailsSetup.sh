@@ -11,6 +11,8 @@ bold=$(tput bold)               # Bold
 red=${txtbld}$(tput setaf 1)    # Red
 reset=$(tput sgr0)              # Reset
 
+DIR="$( cd "$( dirname "${BASH_SOURCE[0]}" )" && pwd )"
+
 
 echo -e $red'This program will install all necessary dependencies for Ruby, RubyGems, and Rails.\nIt also installs several gems.'$reset
 echo -e $red$bold'You will be prompted for your sudo password.'$reset
@@ -20,9 +22,8 @@ sudo -k
 
 # run inside sudo
 sudo sh <<SCRIPT
-	sudo apt-get update
-	# Install necessary dependencies for Ruby, Rails, RubyGems
-	sudo apt-get install -y build-essential openssl libreadline6 libreadline6-dev curl git-core zlib1g zlib1g-dev libssl-dev libyaml-dev libsqlite3-dev sqlite3 libxml2-dev libxslt-dev autoconf libc6-dev ncurses-dev automake libtool bison subversion pkg-config
+sudo apt-get update
+sudo apt-get install -y build-essential openssl libreadline6 libreadline6-dev curl git-core zlib1g zlib1g-dev libssl-dev libyaml-dev libsqlite3-dev sqlite3 libxml2-dev libxslt-dev autoconf libc6-dev ncurses-dev automake libtool bison subversion pkg-config
 SCRIPT
 
 # clear sudo again to install Ruby
@@ -33,16 +34,12 @@ echo -e $red'Installing dependencies completed. Dropping sudo to install Ruby.\n
 echo -e $red'Making Directories'$reset
 if [ ! -d "$HOME/.rbenv" ]; then
 	echo 'Creating ~/.rbenv'
-    mkdir ~/.rbenv
+    mkdir $HOME/.rbenv
 fi
 if [ ! -d "$HOME/.temp" ]; then
 	echo 'Creating ~/.temp'
-    mkdir ~/.temp
+    mkdir $HOME/.temp
 fi
-
-echo -e $red'\nSetting up .gemrc file.\n'$bold'By default this .gemrc does not download docs for gems.'$reset
-mv .gemrc $HOME/.gemrc
-echo -e $red'Done'$reset
 
 echo -e $red'\nInstalling RBEnv'$reset
 cd ~/
@@ -79,6 +76,10 @@ export GEM_HOME=$HOME/.gem
 tar -xzf rubygems-1.8.24.tgz
 cd rubygems-1.8.24
 ruby setup.rb
+echo -e $red'Done'$reset
+
+echo -e $red'\nSetting up .gemrc file.\n'$bold'By default this .gemrc does not download docs for gems.'$reset
+mv $DIR/.gemrc $HOME/.gemrc
 echo -e $red'Done'$reset
 
 echo -e $red'\nInstalling Rails & other gems'$reset
