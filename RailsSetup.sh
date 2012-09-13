@@ -36,14 +36,12 @@ if [ ! -d "$HOME/.rbenv" ]; then
 	echo 'Creating ~/.rbenv'
     mkdir $HOME/.rbenv
 fi
-if [ ! -d "$HOME/.temp" ]; then
-	echo 'Creating ~/.temp'
-    mkdir $HOME/.temp
-fi
+	
+echo 'Creating .temp'
+mkdir $DIR/.temp
 
 echo -e $red'\nInstalling RBEnv'$reset
-cd ~/
-git clone git://github.com/sstephenson/rbenv.git .rbenv
+git clone git://github.com/sstephenson/rbenv.git $HOME/.rbenv
 echo 'export PATH="$HOME/.rbenv/bin:$HOME/.gems/bin:.:$PATH"' >> ~/.bash_profile
 echo 'eval "$(rbenv init -)"' >> ~/.bash_profile
 source ~/.bash_profile
@@ -55,9 +53,8 @@ echo -e $PATH '\n'
 
 echo -e $red'Installing RBEnv ruby-build plugin'$reset
 mkdir -p ~/.rbenv/plugins
-cd ~/.rbenv/plugins
 source ~/.bash_profile
-git clone git://github.com/sstephenson/ruby-build.git
+git clone git://github.com/sstephenson/ruby-build.git $HOME/.rbenv/plugins
 echo -e $red'Done\n'$reset
 
 echo -e $red'Installing Ruby'$reset
@@ -69,16 +66,18 @@ echo -e $red'Setting up global Ruby version.'$reset
 $HOME/.rbenv/bin/rbenv global $RUBYVERSION
 ruby -v
 
-cd ~/.temp
+cd $DIR/.temp
+
 echo -e $red'\nInstalling RubyGems'$reset
-wget -c http://production.cf.rubygems.org/rubygems/rubygems-1.8.24.tgz
 export GEM_HOME=$HOME/.gem
+wget -c http://production.cf.rubygems.org/rubygems/rubygems-1.8.24.tgz
 tar -xzf rubygems-1.8.24.tgz
 cd rubygems-1.8.24
 ruby setup.rb
 echo -e $red'Done'$reset
 
 echo -e $red'\nSetting up .gemrc file.\n'$bold'By default this .gemrc does not download docs for gems.'$reset
+cd ../
 mv $DIR/.gemrc $HOME/.gemrc
 echo -e $red'Done'$reset
 
