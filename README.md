@@ -7,3 +7,8 @@ This script installs Ruby, Rails, and Rubygems using the following mechanisms:
 5. Installs RubyGems 1.8.24
 6. Configures a .gemrc that disables all documentation.
 7. Installs the gems: rails heroku foreman spork guard-spork guard bundle.
+
+
+To install this, copy/paste into a terminal:
+
+wget -qO- https://github.com/johnny5ive/Rails-Setup/blob/master/RailsSetup.sh | sh
