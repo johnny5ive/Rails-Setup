@@ -42,19 +42,18 @@ mkdir $DIR/.temp
 
 echo -e $red'\nInstalling RBEnv'$reset
 git clone git://github.com/sstephenson/rbenv.git $HOME/.rbenv
-echo 'export PATH="$HOME/.rbenv/bin:$HOME/.gems/bin:.:$PATH"' >> ~/.bash_profile
-echo 'eval "$(rbenv init -)"' >> ~/.bash_profile
-source ~/.bash_profile
 echo -e $red'Done\n'$reset
 
 echo -e $red'Updating $PATH'$reset
-
+echo 'export PATH="$HOME/.rbenv/bin:.:$PATH"' >> ~/.bash_profile
+echo 'eval "$(rbenv init -)"' >> ~/.bash_profile
+source ~/.bash_profile
 echo -e $PATH '\n'
 
 echo -e $red'Installing RBEnv ruby-build plugin'$reset
 mkdir -p ~/.rbenv/plugins
 source ~/.bash_profile
-git clone git://github.com/sstephenson/ruby-build.git $HOME/.rbenv/plugins
+git clone git://github.com/sstephenson/ruby-build.git $HOME/.rbenv/plugins/ruby-build
 echo -e $red'Done\n'$reset
 
 echo -e $red'Installing Ruby'$reset
@@ -69,7 +68,6 @@ ruby -v
 cd $DIR/.temp
 
 echo -e $red'\nInstalling RubyGems'$reset
-export GEM_HOME=$HOME/.gem
 wget -c http://production.cf.rubygems.org/rubygems/rubygems-1.8.24.tgz
 tar -xzf rubygems-1.8.24.tgz
 cd rubygems-1.8.24
@@ -85,6 +83,6 @@ echo -e $red'\nInstalling Rails & other gems'$reset
 gem install rails heroku foreman spork guard-spork guard bundle
 echo -e $red'Done\n\n'$reset
 
-echo -e $red$bold'Finished. Files still exist in ~/.temp. Remove them if you wish!'$reset
+echo -e $red$bold'Finished. Files still exist in '$DIR'/.temp. Remove them if you wish!'$reset
 cd $HOME
 exec $SHELL
