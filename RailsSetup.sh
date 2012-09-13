@@ -40,6 +40,10 @@ if [ ! -d "$HOME/.temp" ]; then
     mkdir ~/.temp
 fi
 
+echo -e $red'\nSetting up .gemrc file.\n'$bold'By default this .gemrc does not download docs for gems.'$reset
+mv .gemrc $HOME/.gemrc
+echo -e $red'Done'$reset
+
 echo -e $red'\nInstalling RBEnv'$reset
 cd ~/
 git clone git://github.com/sstephenson/rbenv.git .rbenv
@@ -76,11 +80,6 @@ tar -xzf rubygems-1.8.24.tgz
 cd rubygems-1.8.24
 ruby setup.rb
 echo -e $red'Done'$reset
-
-echo -e $red'\nSetting up .gemrc file.\n'$bold'By default this .gemrc does not download docs for gems.'$reset
-cd ~
-wget -c https://github.com/johnny5ive/Linux-Setup/blob/master/.gemrc
-echo -e $red'Done\n'$reset
 
 echo -e $red'\nInstalling Rails & other gems'$reset
 gem install rails heroku foreman spork guard-spork guard bundle

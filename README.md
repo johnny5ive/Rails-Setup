@@ -15,4 +15,4 @@ This script installs Ruby, Rails, and Rubygems using the following mechanisms:
 
 To install this, copy/paste into a terminal:
 
-wget -qO- https://github.com/johnny5ive/Rails-Setup/blob/master/RailsSetup.sh | sh
+git clone https://github.com/johnny5ive/Rails-Setup.git && chmod +x Rails-Setup/RailsSetup.sh && ./Rails-Setup/RailsSetup.sh
