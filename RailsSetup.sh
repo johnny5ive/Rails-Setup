@@ -52,7 +52,6 @@ echo -e $PATH '\n'
 
 echo -e $red'Installing RBEnv ruby-build plugin'$reset
 mkdir -p ~/.rbenv/plugins
-source ~/.bash_profile
 git clone git://github.com/sstephenson/ruby-build.git $HOME/.rbenv/plugins/ruby-build
 echo -e $red'Done\n'$reset
 
@@ -84,5 +83,6 @@ gem install rails heroku foreman spork guard-spork guard bundle
 echo -e $red'Done\n\n'$reset
 
 echo -e $red$bold'Finished. Files still exist in '$DIR'/.temp. Remove them if you wish!'$reset
+echo -e $red$bold'A restart may be required for all paths to be found, or you can type: '%reset'source ~/.bash_profile'$red$bold' to begin working now.'$reset
 cd $HOME
 exec $SHELL
