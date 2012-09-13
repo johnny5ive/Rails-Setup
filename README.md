@@ -1,3 +1,7 @@
+<h1> Ruby, RubyGems, and Ruby on Rails installer</h1>
+
+Intended for Debian based systems only (Ubuntu, Mint, etc)
+
 This script installs Ruby, Rails, and Rubygems using the following mechanisms:
 
 1. Downloads all the dependencies using apt-get. 
