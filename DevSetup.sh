@@ -82,9 +82,9 @@ echo -e $blue'Current Node Version: '$reset
 node -v
 echo -e $blue'Done\n'$reset
 
-echo -e $blue'Installing NPM'$reset
+echo -e $blue'Installing NPM (this may take a while)'$reset
 cd $DIR/.temp
-curl http://npmjs.org/install.sh | sudo sh
+curl http://npmjs.org/install.sh | sudo sh > /dev/null
 echo -e $blue'Current NPM Version: '$reset
 npm -v
 echo -e $blue'Done\n'$reset
