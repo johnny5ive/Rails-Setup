@@ -46,35 +46,11 @@ echo -e $blu'Installing dependencies'
 # run inside sudo
 sudo sh <<SCRIPT
 
-platform=`uname -m`
-
-# Required for add-apt-repository
-aptitude -y install python-software-properties > /dev/null
-
-# Import keys
-apt-key adv --keyserver keyserver.ubuntu.com --recv 3E5C1192 > /dev/null
-apt-key adv --keyserver pgp.mit.edu --recv-keys FC918B335044912E > /dev/null
-
-# Add Repositories for sun-java6-jdk, sun-java5-jdk, and Dropbox
-add-apt-repository ppa:sun-java-community-team/sun-java6 > /dev/null
-add-apt-repository "deb http://us.archive.ubuntu.com/ubuntu/ raring multiverse" > /dev/null
-add-apt-repository "deb http://us.archive.ubuntu.com/ubuntu/ raring-updates multiverse" > /dev/null
-add-apt-repository "deb http://linux.dropbox.com/ubuntu raring main" > /dev/null
-
 sudo aptitude update > /dev/null
 
 # Dependencies for Rails/NPM Dev
 sudo aptitude install -y build-essential git openssl libreadline6 libreadline6-dev curl git-core zlib1g zlib1g-dev libssl-dev libyaml-dev libsqlite3-dev sqlite3 libxml2-dev libxslt-dev autoconf libc6-dev ncurses-dev automake libtool bison subversion pkg-config > /dev/null
 
-# Dependencies for Chrome
-sudo aptitude install -y libcurl3 xdg-utils > /dev/null
-
-# Dependencies for Android Dev
-if [ "$platform" == "i686" ]; then
-	aptitude -y install git-core gnupg flex bison gperf build-essential zip curl zlib1g-dev libc6 libc6-dev x11proto-core-dev libx11-dev libsdl1.2-dev libesd0-dev libwxgtk2.6-dev squashfs-tools libncurses5-dev libreadline5-dev pngcrush schedtool > /dev/null
-elif [ "$platform" == "x86_64" ]; then
-	aptitude -y install git-core gnupg flex bison gperf build-essential zip curl zlib1g-dev libc6-dev lib32ncurses5-dev ia32-libs x11proto-core-dev libx11-dev lib32readline5-dev lib32z-dev libsdl1.2-dev libesd0-dev libwxgtk2.6-dev squashfs-tools libncurses5-dev pngcrush schedtool gcc-multilib g++-multilib libc6-i386 libc6-dev-i386 > /dev/null
-fi
 SCRIPT
 
 # clear sudo to continue
@@ -117,34 +93,6 @@ echo -e $blue'Installing Yeoman and gems'$reset
 gem update --system
 npm install -g yo compass grunt-cli bower generator-angular
 echo -e $blue'Done\n'$reset
-
-echo -e $blue"Installing Sun Java"$reset
-aptitude -y install sun-java6-jdk sun-java5-jdk
-update-java-alternatives -s java-1.5.0-sun > /dev/null
-
-#dropping sudo again
-sudo -k
-
-echo -e $blue$bold'Setting Up Android'$reset
-wget -q -O /usr/bin/repo http://android.git.kernel.org/repo
-chmod +x /usr/bin/repo
-
-# Get the latest toolchain/cross compiler compatible with GCC 4.4
-wget -q wget http://www.codesourcery.com/sgpp/lite/arm/portal/package6488/public/arm-none-linux-gnueabi/arm-2010q1-202-arm-none-linux-gnueabi-i686-pc-linux-gnu.tar.bz2
-tar -xf arm-2010q1-202-arm-none-linux-gnueabi-i686-pc-linux-gnu.tar.bz2
-mkdir /opt/toolchains
-mv arm-2010q1 /opt/toolchains/
-
-# Get the Android SDK and NDK
-wget -q http://dl.google.com/android/android-sdk_r10-linux_x86.tgz
-wget -q http://dl.google.com/android/ndk/android-ndk-r5b-linux-x86.tar.bz2
-tar -xf android-sdk_r10-linux_x86.tgz
-tar -xf android-ndk-r5b-linux-x86.tar.bz2
-mv android-ndk-r5b android-ndk
-mv android-sdk-linux_x86 android-sdk
-chown -R 1000:1000 android-ndk
-chown -R 1000:1000 android-sdk
-echo "export PATH=\$PATH:~/android-sdk/tools:~/android-sdk/platform-tools" >> ~/.bashrc
 
 echo -e $blue'Installing RBEnv'$reset
 git clone git://github.com/sstephenson/rbenv.git $HOME/.rbenv
