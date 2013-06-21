@@ -74,9 +74,9 @@ cd $DIR/.temp
 git clone https://github.com/joyent/node.git
 cd node
 
-./configure
-make
-sudo make install
+./configure > /dev/null
+make > /dev/null
+sudo make install > /dev/null
 
 echo -e $blue'Current Node Version: '$reset
 node -v
