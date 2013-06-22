@@ -13,8 +13,8 @@ sudo ./oab-java.sh
 # aptitude -y install python-software-properties > /dev/null
 # add-apt-repository ppa:sun-java-community-team/sun-java6 > /dev/null
 
-aptitude -y install sun-java6-jdk sun-java5-jdk
-update-java-alternatives -s java-1.6.0-sun
+aptitude -y install sun-java6-jdk
+update-java-alternatives -s java-6-sun
 echo "* Install completed!"
 sudo -k
 exit 0
