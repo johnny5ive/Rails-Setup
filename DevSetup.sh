@@ -125,7 +125,7 @@ cd $DIR/.temp
 echo -e $blue'Installing RubyGems'$reset
 git clone https://github.com/rubygems/rubygems.git
 cd rubygems
-ruby setup.rb
+ruby setup.rb > /dev/null
 echo -e $blue'Current RubyGems Version: '$reset
 gem -v
 echo -e $blue'Done\n'$reset
