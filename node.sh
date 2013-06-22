@@ -14,12 +14,12 @@ redbold=${red}${bold}
 
 
 aptitude update > /dev/null
-aptitude install python-software-properties python g++ make > /dev/null
+aptitude install -y python-software-properties python g++ make > /dev/null
 
 echo -e $blue'Installing Node.js'$reset
 add-apt-repository ppa:chris-lea/node.js
 aptitude update
-aptitude install nodejs
+aptitude install -y nodejs
 
 echo -e $blue'Current Node Version: '$reset
 node -v
