@@ -82,15 +82,16 @@ echo -e $blue'Current Node Version: '$reset
 node -v
 echo -e $blue'Done\n'$reset
 
-echo -e $blue'Installing NPM (this may take a while)'$reset
+echo -e $blue'Installing NPM'$reset
 cd $DIR/.temp
-curl http://npmjs.org/install.sh | sudo sh > /dev/null
+wget http://npmjs.org/install.sh -O npm.sh
+chmod +x npm.sh
+./npm.sh > /dev/null
 echo -e $blue'Current NPM Version: '$reset
 npm -v
 echo -e $blue'Done\n'$reset
 
 echo -e $blue'Installing Yeoman and gems'$reset
-gem update --system
 npm install -g yo compass grunt-cli bower generator-angular
 echo -e $blue'Done\n'$reset
 
