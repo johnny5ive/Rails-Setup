@@ -80,13 +80,6 @@ sudo make install > /dev/null
 
 echo -e $blue'Current Node Version: '$reset
 node -v
-echo -e $blue'Done\n'$reset
-
-echo -e $blue'Installing NPM'$reset
-cd $DIR/.temp
-wget http://npmjs.org/install.sh -O npm.sh
-chmod +x npm.sh
-./npm.sh > /dev/null
 echo -e $blue'Current NPM Version: '$reset
 npm -v
 echo -e $blue'Done\n'$reset
@@ -97,15 +90,14 @@ echo -e $blue'Done\n'$reset
 
 echo -e $blue'Installing RBEnv'$reset
 git clone git://github.com/sstephenson/rbenv.git $HOME/.rbenv
-echo -e $blue'Current RBenv version:'$reset
-rbenv -v
-echo -e $blue'Done\n'$reset
 
-echo -e $blue'Updating $PATH'$reset
+echo -e $blue'Updating $PATH for RBEnv'$reset
 echo 'export PATH="$HOME/.rbenv/bin:.:$PATH"' >> ~/.bash_profile
 echo 'eval "$(rbenv init -)"' >> ~/.bash_profile
 source ~/.bash_profile
 echo -e $blue'Current $PATH: '$reset $PATH 
+echo -e $blue'Current RBenv version:'$reset
+rbenv -v
 echo -e $blue'Done\n'$reset
 
 echo -e $blue'Installing RBEnv ruby-build plugin'$reset
