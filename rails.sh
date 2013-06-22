@@ -1,7 +1,7 @@
 #!/bin/bash
 #
 # Created by Morgan Hein
-# A Ruby, RoR, Node/NPM install and config script.
+# A Ruby, RoR, and gems install and config script.
 
 
 #Ruby version to install and use as default
@@ -66,27 +66,6 @@ fi
 	
 echo 'Creating .temp\n'
 mkdir $DIR/.temp
-
-echo -
-
-echo -e $blue'Installing Node.js'$reset
-cd $DIR/.temp
-git clone https://github.com/joyent/node.git
-cd node
-
-./configure > /dev/null
-make > /dev/null
-sudo make install > /dev/null
-
-echo -e $blue'Current Node Version: '$reset
-node -v
-echo -e $blue'Current NPM Version: '$reset
-npm -v
-echo -e $blue'Done\n'$reset
-
-echo -e $blue'Installing Yeoman and gems'$reset
-npm install -g yo compass grunt-cli bower generator-angular
-echo -e $blue'Done\n'$reset
 
 echo -e $blue'Installing RBEnv'$reset
 git clone git://github.com/sstephenson/rbenv.git $HOME/.rbenv
