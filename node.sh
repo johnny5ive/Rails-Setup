@@ -18,7 +18,7 @@ aptitude install -y python-software-properties python g++ make > /dev/null
 
 echo -e $blue'Installing Node.js'$reset
 add-apt-repository ppa:chris-lea/node.js
-aptitude update
+aptitude update > /dev/null
 aptitude install -y nodejs
 
 echo -e $blue'Current Node Version: '$reset
