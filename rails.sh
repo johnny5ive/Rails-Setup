@@ -33,7 +33,7 @@ DIR="$( cd "$( dirname "${BASH_SOURCE[0]}" )" && pwd )"
 
 # Determine the platform we're working with
 
-echo -e $blue'This script will install all necessary dependencies for Ruby, RubyGems, Rails, Node.js, and NPM.\nIt also installs several gems and bundles.'$reset
+echo -e $blue'This script will install all necessary dependencies for Ruby, RubyGems and Rails.\nIt also installs several gems and bundles.'$reset
 echo -e $redbold'You may be prompted for your sudo password several times.\n'$reset
 echo -e $red'Press ENTER to continue.'
 read null
