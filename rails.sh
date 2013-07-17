@@ -86,12 +86,11 @@ echo -e $blue'Done\n'$reset
 
 echo -e $blue'Installing Ruby'$bold' (this may take a while)'$reset
 $HOME/.rbenv/bin/rbenv install $RUBYVERSION
-echo -e $blue'Current Ruby Version: '$reset
-ruby -v
 echo -e $blue'Done\n'$reset
 
 echo -e $blue'Setting up global Ruby version'$reset
 $HOME/.rbenv/bin/rbenv global $RUBYVERSION
+echo -e $blue'Current Ruby Version: '$reset
 ruby -v
 echo -e $blue'Done\n'$reset
 
@@ -114,7 +113,7 @@ mv $DIR/.gemrc $HOME/.gemrc
 echo -e $blue'Done\n'$reset
 
 echo -e $blue'Installing Rails & other gems'$reset
-gem install rails heroku foreman spork guard-spork guard bundle
+gem install rails heroku foreman spork guard-spork guard bundle > /dev/null
 echo -e $blue'Current Rails Version: '$reset
 rails -v
 echo -e $blue'Done\n'$reset
