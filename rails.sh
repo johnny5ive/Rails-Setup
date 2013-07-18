@@ -113,7 +113,7 @@ mv $DIR/.gemrc $HOME/.gemrc
 echo -e $blue'Done\n'$reset
 
 echo -e $blue'Installing Rails & other gems'$reset
-gem install rails heroku foreman spork guard-spork guard bundle > /dev/null
+gem install rails heroku foreman spork guard-spork guard bundle compass > /dev/null
 echo -e $blue'Current Rails Version: '$reset
 rails -v
 echo -e $blue'Done\n'$reset
