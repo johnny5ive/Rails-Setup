@@ -11,7 +11,7 @@ echo -e $redbold"Updating System\n"$reset
 aptitude update && aptitude safe-upgrade > /dev/null
 
 echo -e $blue"Installing python-software-properties"$reset
-aptitude install -y python-software-properties
+aptitude install -y python-software-properties linux-headers-generic dkms linux-headers-$(uname -r)
 echo -e $blue"Done.\n"$reset
 
 add-apt-repository ppa:gnome3-team/gnome3
